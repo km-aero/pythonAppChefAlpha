@@ -10,8 +10,6 @@ end
 
 package 'packer'
 
-package 'chef'
-
 package 'python3-pip'
 
 bash 'install_requirements' do
@@ -57,11 +55,11 @@ bash 'java_env_vars' do
 end
 
 bash 'install_chef' do
-  code <<-EOL
-    wget https://packages.chef.io/files/stable/chef-workstation/0.2.43/ubuntu/18.04/chef-workstation_0.2.43-1_amd64
+  code <<-EOH
+    wget https://packages.chef.io/files/stable/chef-workstation/0.17.5/ubuntu/18.04/chef-workstation_0.17.5-1_amd64.deb
     sudo dpkg -i chef-workstation_*.deb
-    rm chef-workstation_*.deb
-  EOL
+    sudo rm chef-workstation_*.deb
+  EOH
 end
 
 directory '/home/ubuntu/Downloads' do
